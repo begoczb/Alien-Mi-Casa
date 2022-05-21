@@ -1,0 +1,12 @@
+/* Issues adding new font */
+
+@font-face {
+  font-family: "SciFi";
+  src: local("../VarinonormalRegular-nRYg4.otf") format("onetype");
+  /* src: url("Barcade-R4LM.otf") format ("opentype"); */
+}
+
+body {
+  font-family: "SciFi";
+  font-size: 2rem;
+}
