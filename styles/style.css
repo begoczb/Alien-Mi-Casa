@@ -24,6 +24,7 @@ body {
 
   width: 100vw;
   height: 100vh;
+  position: relative;
 }
 
 #homepage {
@@ -31,6 +32,8 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 footer p {
@@ -41,7 +44,8 @@ footer p {
 .btn-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: 1rem;
 }
 
 .rules-container {
@@ -52,6 +56,38 @@ footer p {
 /* .astronaut {
   width: 3rem;
   height: 3rem;
-  position: absolute;
-  background-position-x: 0;
+  /* position: absolute; 
+  position: 0, 0;
 } */
+
+.rules-container {
+  display: none;
+  background-color: white;
+  position: absolute;
+
+  padding: 1.5rem;
+  border-radius: 30px;
+}
+
+.rules-container h3 {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.rules-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.show {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  padding: 1.5rem;
+  border: none;
+  border-radius: 20px;
+}
