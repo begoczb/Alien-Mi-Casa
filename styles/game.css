@@ -1,10 +1,13 @@
 /* Issues adding new font */
 
-@font-face {
+/* @font-face {
   font-family: "SciFi";
   src: local("../VarinonormalRegular-nRYg4.otf") format("onetype");
-  /* src: url("Barcade-R4LM.otf") format ("opentype"); */
-}
+   src: url("Barcade-R4LM.otf") format ("opentype"); 
+} */
+
+/* TODO */
+/* MAKE TITLE SMALLER HERE */
 
 * {
   box-sizing: border-box;
@@ -14,11 +17,30 @@
 body {
   display: flex;
   font-family: "SciFi";
-  font-size: 2rem;
   background-image: url("../src/images/alienmicasabg.png");
   background-size: cover;
   background-repeat: no-repeat;
 
   width: 100vw;
   height: 100vh;
+}
+
+#game {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#canvas {
+  border: 1px solid white;
 }

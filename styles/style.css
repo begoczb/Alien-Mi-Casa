@@ -1,10 +1,11 @@
 /* Issues adding new font */
+/* @import url("/VarinonormalRegular-nRYg4.otf"); */
 
-@font-face {
+/* @font-face {
   font-family: "SciFi";
-  src: local("../VarinonormalRegular-nRYg4.otf") format("onetype");
-  /* src: url("Barcade-R4LM.otf") format ("opentype"); */
-}
+   src: local("VarinonormalRegular-nRYg4.otf") format("onetype"); 
+  src: ("../Barcade-R4LM.otf") format ("opentype");
+} */
 
 * {
   box-sizing: border-box;
@@ -36,3 +37,21 @@ footer p {
   color: white;
   font-size: 1rem;
 }
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rules-container {
+  display: hidden;
+  z-index: 1;
+}
+
+/* .astronaut {
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  background-position-x: 0;
+} */

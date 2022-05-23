@@ -1,0 +1,1 @@
+const myGame = new Game();

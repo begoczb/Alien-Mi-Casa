@@ -8,16 +8,23 @@
     <link rel="stylesheet" href="styles/game.css" />
   </head>
   <body>
-    <section>
+    <section id="game">
       <div>
         <h1><img src="./src/images/Alien-Mi-Casa-Title.png" /></h1>
-        <div>
-          <button class="btn pause">START/PAUSE</button>
+        <div class="btn-container">
+          <button class="btn start">START/PAUSE</button>
           <button class="btn rules">RULES</button>
         </div>
       </div>
-      <div id="canvas"></div>
+      <div id="game-canvas">
+        <canvas id="canvas" width="600" height="800"></canvas>
+      </div>
     </section>
     <footer>Begonia Calzado</footer>
+    <script type="text/javascript" src="js/obstacles.js"></script>
+    <script type="text/javascript" src="js/alien.js"></script>
+    <script type="text/javascript" src="js/background.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>
