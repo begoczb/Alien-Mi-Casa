@@ -27,14 +27,29 @@ class Alien {
   }
 
   draw() {
-    this.ctx.drawImage(
-      this.imageB,
-      this.x - 10,
-      this.y - this.imageB.height / 3,
-      this.widthB,
-      this.heightB
-    );
-    this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    if (this.invulnerabilityFrames) {
+      this.ctx.save();
+      this.ctx.globalAlpha = 0.5;
+      this.ctx.drawImage(
+        this.imageB,
+        this.x - 10,
+        this.y - this.imageB.height / 3,
+        this.widthB,
+        this.heightB
+      );
+      this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+      this.ctx.restore();
+    } else {
+      this.ctx.globalAlpha = 1;
+      this.ctx.drawImage(
+        this.imageB,
+        this.x - 10,
+        this.y - this.imageB.height / 3,
+        this.widthB,
+        this.heightB
+      );
+      this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }
   }
 
   move(event) {

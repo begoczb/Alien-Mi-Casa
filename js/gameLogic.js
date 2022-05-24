@@ -1,4 +1,4 @@
-const sources = [
+const skySources = [
   "./src/images/first_birb_left.png",
   // "./src/images/birb_left2.png",
   "./src/images/plane.png",
@@ -6,6 +6,10 @@ const sources = [
   // "./src/images/spaceship_placeholder.png",
   // "./src/images/rocket_placeholder.png",
 ];
+
+const spaceSources = [];
+
+const timerContainer = document.querySelector(".timer-container");
 
 const minDec = document.querySelector(".minDec");
 const minUni = document.querySelector(".minUni");
@@ -42,6 +46,8 @@ class Game {
     // console.log(this.canvas);
     this.ctx = this.canvas.getContext("2d");
     document.querySelector(".start").onclick = () => {
+      this.canvas.classList.remove("hidden");
+      timerContainer.classList.remove("hidden");
       this.startGame();
     };
   }
@@ -85,7 +91,7 @@ class Game {
           this.canvas,
           this.ctx,
           this.moveSpeed,
-          sources[Math.floor(Math.random() * sources.length)]
+          skySources[Math.floor(Math.random() * skySources.length)]
         )
       );
       // console.log(this.obstacles);

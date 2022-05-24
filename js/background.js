@@ -15,7 +15,7 @@ class Background {
   draw(time) {
     // console.log(`Background??`);
 
-    if (time === 240) {
+    if (time === 290) {
       this.image.src = "./src/images/background-placeholder.jpg";
     }
     this.ctx.drawImage(

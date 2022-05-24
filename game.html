@@ -9,16 +9,24 @@
   </head>
   <body>
     <section id="game">
-      <div>
+      <div class="container">
         <h1><img src="./src/images/Alien-Mi-Casa-Title.png" /></h1>
         <div class="btn-container">
-          <button class="btn start">START/PAUSE</button>
+          <button class="btn start">START</button>
           <button class="btn rules">RULES</button>
+          <button class="btn sound-on">
+            <img
+              src="./src/images/no_sound_icon.svg"
+              width="45"
+              height="45"
+              alt="sound icon"
+            />
+          </button>
         </div>
       </div>
       <div id="game-canvas">
-        <canvas id="canvas" width="600" height="800"></canvas>
-        <div class="timer-container">
+        <canvas id="canvas" width="600" height="800" class="hidden"></canvas>
+        <div class="timer-container hidden">
           <span class="minDec">0</span>
           <span class="minUni">5</span>
           <span>:</span>
@@ -27,6 +35,13 @@
         </div>
       </div>
     </section>
+    <aside class="astronaut bubble">
+      <img
+        src="./src/images/astronaut-placehoder.png"
+        alt="astronaut"
+        class="inside-bubble"
+      />
+    </aside>
     <footer>Begonia Calzado</footer>
     <script type="text/javascript" src="js/obstacles.js"></script>
     <script type="text/javascript" src="js/alien.js"></script>
