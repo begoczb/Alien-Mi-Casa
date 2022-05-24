@@ -7,6 +7,11 @@ const sources = [
   // "./src/images/rocket_placeholder.png",
 ];
 
+const minDec = document.querySelector(".minDec");
+const minUni = document.querySelector(".minUni");
+const secDec = document.querySelector(".secDec");
+const secUni = document.querySelector(".secUni");
+
 //TODO, game lose/win logic
 //TIMER, print on top of canvas
 //ADD BALLOONS
@@ -25,9 +30,10 @@ class Game {
     this.alien = null;
     this.balloons = 5;
     this.intervalId = null;
-    this.timer = 0;
+    this.counter = 0;
     this.moveSpeed = 5;
     this.gameOver = false;
+    this.timer = null;
     this.init();
   }
   init() {
@@ -42,10 +48,12 @@ class Game {
 
   startGame() {
     // console.log(`Game started!!`);
+    this.timer = new Timer(300);
     //create background
     this.background = new Background(this.canvas, this.ctx, this.moveSpeed);
     //create alien
     this.alien = new Alien(this.canvas, this.ctx);
+    this.timer.start(() => this.printTime());
 
     //draw all function
     this.drawAll();
@@ -65,13 +73,13 @@ class Game {
   drawAll() {
     this.reset();
 
-    this.background.draw();
+    this.background.draw(this.timer.currentTime);
 
     this.background.scroll();
 
     this.alien.draw();
 
-    if (this.timer % 30 === 0) {
+    if (this.counter % 30 === 0) {
       this.obstacles.push(
         new Obstacle(
           this.canvas,
@@ -102,7 +110,12 @@ class Game {
       }
     }
 
-    this.timer++;
+    this.counter++;
+    this.gameStatus();
+    if (this.gameOver) {
+      cancelAnimationFrame(this.intervalId);
+      return;
+    }
 
     this.intervalId = requestAnimationFrame(() => this.drawAll());
   }
@@ -124,9 +137,32 @@ class Game {
   gameStatus() {
     if (this.balloons <= 0) {
       this.gameOver = true;
+      this.timer.stop();
+      // this.timer.reset();
+      console.log(`Game Over!!`);
+    }
+    if (this.timer.currentTime === 0) {
+      this.gameOver = true;
+      this.timer.stop();
+      // this.timer.reset();
       console.log(`Game Over!!`);
     }
   }
 
-  printTime() {}
+  printTime() {
+    this.printMinutes();
+    this.printSeconds();
+  }
+
+  printMinutes() {
+    let minutes = this.timer.computeTwoDigitNumber(this.timer.getMinutes());
+    minDec.textContent = minutes.toString().slice(0, 1);
+    minUni.textContent = minutes.toString().slice(1);
+  }
+
+  printSeconds() {
+    let seconds = this.timer.computeTwoDigitNumber(this.timer.getSeconds());
+    secUni.textContent = seconds.toString().slice(1);
+    secDec.textContent = seconds.toString().slice(0, 1);
+  }
 }

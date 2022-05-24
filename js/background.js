@@ -8,13 +8,16 @@ class Background {
     this.init();
   }
   init() {
-    this.image.src = "./src/images/background-placeholder.jpg";
-    console.log(`initilize bg`);
+    this.image.src = "./src/images/background_sky_placeholder.jpg";
     this.draw();
   }
 
-  draw() {
+  draw(time) {
     // console.log(`Background??`);
+
+    if (time === 240) {
+      this.image.src = "./src/images/background-placeholder.jpg";
+    }
     this.ctx.drawImage(
       this.image,
       0,

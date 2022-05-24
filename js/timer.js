@@ -1,12 +1,14 @@
 class Timer {
-  constructor() {
-    this.currentTime = null;
+  constructor(time) {
+    this.currentTime = time;
+    this.time = time;
     this.intervalId = null;
   }
 
   start(callback) {
     this.intervalId = setInterval(() => {
-      this.currentTime += 1;
+      this.currentTime -= 1;
+      console.log(`current time is: ${this.currentTime}`);
       if (typeof callback === "function") {
         callback();
       }
@@ -33,7 +35,7 @@ class Timer {
     return clearInterval(this.intervalId);
   }
 
-  reset() {
-    this.currentTime = 0;
-  }
+  //   reset() {
+  //     this.currentTime = 0;
+  //   }
 }
