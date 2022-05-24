@@ -59,6 +59,6 @@ class Alien {
         this.invulnerabilityFrames = false;
         clearInterval(intervalId);
       }
-    }, 1000);
+    }, 500);
   }
 }

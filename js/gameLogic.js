@@ -122,7 +122,7 @@ class Game {
   }
 
   gameStatus() {
-    if (this.balloons < 0) {
+    if (this.balloons <= 0) {
       this.gameOver = true;
       console.log(`Game Over!!`);
     }

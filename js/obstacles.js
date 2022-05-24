@@ -10,6 +10,8 @@ class Obstacle {
       Math.floor(Math.random() * this.canvas.width - this.image.width) + 50;
     this.y = 0;
     this.source = source;
+    this.angle = 0;
+    this.rotation = 2.5;
     this.init();
   }
 
@@ -35,13 +37,17 @@ class Obstacle {
   }
 
   drawRotate() {
+    this.angle += this.rotation;
     this.ctx.save();
-    // this.ctx.clearRect(0, 0, 200, 200);
-    this.ctx.translate(100, 100); // to get it in the origin
-    this.rotation += 1;
-    this.ctx.rotate((this.rotation * Math.PI) / 64); //rotate in origin
-    this.ctx.translate(-100, -100); //put it back
-    this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    this.ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+    this.ctx.rotate((this.angle * Math.PI) / 180);
+    this.ctx.drawImage(
+      this.image,
+      (this.width / 2) * -1,
+      (this.height / 2) * -1,
+      this.width,
+      this.height
+    );
     this.ctx.restore();
   }
 
