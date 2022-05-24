@@ -1,6 +1,6 @@
 const sources = [
-  "./src/images/birb_left.png",
-  "./src/images/birb_left2.png",
+  "./src/images/first_birb_left.png",
+  // "./src/images/birb_left2.png",
   "./src/images/plane.png",
   "./src/images/asteroid.png",
   // "./src/images/spaceship_placeholder.png",
@@ -33,7 +33,7 @@ class Game {
   init() {
     //We get the canvas and the context of the canvas
     this.canvas = document.querySelector("#canvas");
-    console.log(this.canvas);
+    // console.log(this.canvas);
     this.ctx = this.canvas.getContext("2d");
     document.querySelector(".start").onclick = () => {
       this.startGame();
@@ -71,7 +71,7 @@ class Game {
 
     this.alien.draw();
 
-    if (this.timer % 60 === 0) {
+    if (this.timer % 30 === 0) {
       this.obstacles.push(
         new Obstacle(
           this.canvas,
@@ -80,7 +80,7 @@ class Game {
           sources[Math.floor(Math.random() * sources.length)]
         )
       );
-      console.log(this.obstacles);
+      // console.log(this.obstacles);
     }
 
     for (let i = 0; i < this.obstacles.length; i++) {
