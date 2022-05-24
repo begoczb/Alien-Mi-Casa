@@ -6,7 +6,8 @@ class Obstacle {
     this.image = new Image();
     this.width = null;
     this.height = null;
-    this.x = Math.floor((Math.random() * this.canvas.width) / 3) + 50;
+    this.x =
+      Math.floor(Math.random() * this.canvas.width - this.image.width) + 50;
     this.y = 0;
     this.source = source;
     this.init();
@@ -26,9 +27,22 @@ class Obstacle {
     } else if (this.image.src.includes("second")) {
       this.image.src = `./src/images/first_birb_left.png`;
       this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    } else if (this.image.src.includes("asteroid")) {
+      this.drawRotate();
     } else {
       this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
+  }
+
+  drawRotate() {
+    this.ctx.save();
+    // this.ctx.clearRect(0, 0, 200, 200);
+    this.ctx.translate(100, 100); // to get it in the origin
+    this.rotation += 1;
+    this.ctx.rotate((this.rotation * Math.PI) / 64); //rotate in origin
+    this.ctx.translate(-100, -100); //put it back
+    this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    this.ctx.restore();
   }
 
   move() {

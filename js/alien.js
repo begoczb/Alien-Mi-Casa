@@ -3,7 +3,7 @@ class Alien {
     this.canvas = canvas;
     this.ctx = ctx;
     this.x = this.canvas.width / 2 - 50;
-    this.y = this.canvas.height / 2 + 159;
+    this.y = this.canvas.height / 2 + 250;
     this.image = new Image();
     this.imageB = new Image();
     this.width = null;
@@ -17,10 +17,10 @@ class Alien {
   init() {
     this.image.src = "./src/images/alien.png";
     this.imageB.src = "./src/images/balloons.png";
-    this.width = this.image.width;
-    this.height = this.image.height;
-    this.widthB = this.imageB.width;
-    this.heightB = this.imageB.height;
+    this.width = this.image.width / 1.5;
+    this.height = this.image.height / 1.5;
+    this.widthB = this.imageB.width / 1.5;
+    this.heightB = this.imageB.height / 1.5;
     // console.log(`We draw the alien!!`);
     this.draw();
   }
@@ -28,7 +28,7 @@ class Alien {
   draw() {
     this.ctx.drawImage(
       this.imageB,
-      this.x - 15,
+      this.x - 10,
       this.y - this.imageB.height / 3,
       this.widthB,
       this.heightB

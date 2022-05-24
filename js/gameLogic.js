@@ -86,6 +86,10 @@ class Game {
     for (let i = 0; i < this.obstacles.length; i++) {
       this.obstacles[i].draw();
       this.obstacles[i].move();
+      if (this.collisionCheck(this.obstacles[i])) {
+        cancelAnimationFrame(this.intervalId);
+        return;
+      }
     }
 
     this.timer++;
@@ -93,7 +97,19 @@ class Game {
     this.intervalId = requestAnimationFrame(() => this.drawAll());
   }
 
-  collisionCheck() {}
+  collisionCheck(obstacle) {
+    const alienHead = this.alien.y - this.alien.heightB;
+    const alienFeet =
+      alienHead +
+      (this.alien.height + (this.alien.height - this.alien.heightB));
+    const alienLeft = this.alien.x;
+    const alienRight = alienLeft + this.alien.widthB;
+    const withinX =
+      obstacle.x + obstacle.width > alienLeft && obstacle.x < alienRight;
+    const withinY = obstacle.y > alienHead && obstacle.y < alienFeet;
+
+    return withinX && withinY;
+  }
 
   gameStatus() {
     if (this.balloons === 0) {
