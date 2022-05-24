@@ -6,7 +6,7 @@ class Obstacle {
     this.image = new Image();
     this.width = null;
     this.height = null;
-    this.x = Math.floor((Math.random() * this.canvas.width) / 2) + 20;
+    this.x = Math.floor(Math.random() * this.canvas.width - 100) + 50;
     this.y = 0;
     this.source = source;
     this.init();
@@ -14,8 +14,8 @@ class Obstacle {
 
   init() {
     this.image.src = `${this.source}`;
-    this.width = this.image.width / 20;
-    this.height = this.image.height / 20;
+    this.width = this.image.width;
+    this.height = this.image.height;
     this.draw();
   }
 
@@ -24,6 +24,11 @@ class Obstacle {
   }
 
   move() {
-    this.y += this.moveSpeed;
+    if (this.source.includes("asteroid")) {
+      this.y += this.moveSpeed * 2;
+      this.x -= this.moveSpeed / 2;
+    } else {
+      this.y += this.moveSpeed;
+    }
   }
 }

@@ -1,12 +1,11 @@
 const sources = [
-  "./src/images/birb_placeholder.png",
-  "./src/images/plane_placeholder.png",
-  "./src/images/helicopter_placeholder.png",
-  "./src/images/asteroid_placeholder.png",
-  "./src/images/spaceship_placeholder.png",
-  "./src/images/rocket_placeholder.png",
+  "./src/images/birb_left.png",
+  "./src/images/birb_left2.png",
+  "./src/images/plane.png",
+  "./src/images/asteroid.png",
+  // "./src/images/spaceship_placeholder.png",
+  // "./src/images/rocket_placeholder.png",
 ];
-const myGame = new Game();
 
 //TODO, game lose/win logic
 //TIMER, print on top of canvas
@@ -15,7 +14,7 @@ const myGame = new Game();
 //random source for obstacles
 //faster over time??!
 
-console.log(sources[0]);
+// console.log(sources[0]);
 class Game {
   constructor() {
     //All we need for our game
@@ -74,7 +73,12 @@ class Game {
 
     if (this.timer % 60 === 0) {
       this.obstacles.push(
-        new Obstacle(this.canvas, this.ctx, this.moveSpeed, sources[0])
+        new Obstacle(
+          this.canvas,
+          this.ctx,
+          this.moveSpeed,
+          sources[Math.floor(Math.random() * sources.length)]
+        )
       );
       console.log(this.obstacles);
     }

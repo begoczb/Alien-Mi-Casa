@@ -46,6 +46,8 @@ footer p {
   flex-direction: row;
   justify-content: space-around;
   padding: 1rem;
+  width: 20%;
+  height: 10%;
 }
 
 .rules-container {
