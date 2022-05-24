@@ -15,6 +15,7 @@ const minDec = document.querySelector(".minDec");
 const minUni = document.querySelector(".minUni");
 const secDec = document.querySelector(".secDec");
 const secUni = document.querySelector(".secUni");
+const astronaut = document.querySelector(".astronaut");
 
 //TODO, game lose/win logic
 //TIMER, print on top of canvas
@@ -48,6 +49,9 @@ class Game {
     document.querySelector(".start").onclick = () => {
       this.canvas.classList.remove("hidden");
       timerContainer.classList.remove("hidden");
+      if (!astronaut.classList.contains("hidden")) {
+        astronaut.classList.add("hidden");
+      }
       this.startGame();
     };
   }
