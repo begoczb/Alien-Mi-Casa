@@ -10,6 +10,7 @@ class Alien {
     this.height = null;
     this.widthB = null;
     this.heightB = null;
+    this.invulnerabilityFrames = false;
 
     this.init();
   }
@@ -46,5 +47,18 @@ class Alien {
     // console.log(boundary);
 
     // console.log(this.x);
+  }
+
+  setInvulnerable() {
+    this.invulnerabilityFrames = true;
+    let counter = 0;
+    let intervalId = setInterval(() => {
+      counter++;
+      if (counter === 1) {
+        counter = 0;
+        this.invulnerabilityFrames = false;
+        clearInterval(intervalId);
+      }
+    }, 1000);
   }
 }

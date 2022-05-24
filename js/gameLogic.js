@@ -23,7 +23,7 @@ class Game {
     this.background = null;
     this.obstacles = [];
     this.alien = null;
-    this.balloons = 0;
+    this.balloons = 5;
     this.intervalId = null;
     this.timer = 0;
     this.moveSpeed = 5;
@@ -87,8 +87,18 @@ class Game {
       this.obstacles[i].draw();
       this.obstacles[i].move();
       if (this.collisionCheck(this.obstacles[i])) {
-        cancelAnimationFrame(this.intervalId);
-        return;
+        if (!this.alien.invulnerabilityFrames) {
+          this.balloons -= 1;
+          console.log(this.alien.invulnerabilityFrames);
+          this.alien.setInvulnerable();
+          console.log(this.alien.invulnerabilityFrames);
+        }
+        this.gameStatus();
+        console.log(this.balloons);
+        if (this.gameOver) {
+          cancelAnimationFrame(this.intervalId);
+          return;
+        }
       }
     }
 
@@ -101,9 +111,9 @@ class Game {
     const alienHead = this.alien.y - this.alien.heightB;
     const alienFeet =
       alienHead +
-      (this.alien.height + (this.alien.height - this.alien.heightB));
+      (this.alien.height + (this.alien.heightB - this.alien.height));
     const alienLeft = this.alien.x;
-    const alienRight = alienLeft + this.alien.widthB;
+    const alienRight = alienLeft + this.alien.width;
     const withinX =
       obstacle.x + obstacle.width > alienLeft && obstacle.x < alienRight;
     const withinY = obstacle.y > alienHead && obstacle.y < alienFeet;
@@ -112,10 +122,9 @@ class Game {
   }
 
   gameStatus() {
-    if (this.balloons === 0) {
-      gameOver = true;
-    }
-    if (this.timer) {
+    if (this.balloons < 0) {
+      this.gameOver = true;
+      console.log(`Game Over!!`);
     }
   }
 
