@@ -1,4 +1,4 @@
-const myGame = new Game();
+let myGame = new Game();
 
 const backgroundMusic = document.querySelector("audio");
 const soundBtn = document.querySelector(".sound");
@@ -15,6 +15,9 @@ const goMessage = document.querySelector(".message");
 const highScore = document.querySelector(".high-score");
 
 // const leftButton = document.querySelector(".left");
+
+const replayBtn = document.querySelectorAll(".replay");
+console.log(replayBtn);
 
 backgroundMusic.play();
 
@@ -37,6 +40,32 @@ rulesBtn.addEventListener("click", () => {
     rules.classList.add("hidden");
   }
 });
+
+for (let i = 0; i < replayBtn.length; i++) {
+  replayBtn[i].addEventListener("click", () => {
+    myGame.timer.stop();
+    myGame.timer.reset();
+    myGame = new Game();
+    myGame.startGame();
+    if (replayBtn[i].classList.contains("go-btn")) {
+      gameOver.classList.add("hidden");
+    }
+  });
+}
+
+// replayBtn[0].addEventListener("click", () => {
+//   // console.log(`click click!`);
+//   myGame.timer.stop();
+//   myGame.timer.reset();
+//   myGame = new Game();
+//   myGame.startGame();
+// });
+
+// replayBtn[1].addEventListener("click", () => {
+//   // console.log(`click click!`);
+//   myGame = new Game();
+//   myGame.startGame();
+// });
 
 function showGameOver(condition) {
   if (condition === false) {

@@ -24,11 +24,9 @@ const astronaut = document.querySelector(".astronaut");
 
 //TODO,
 //game lose/win logic, RESET
-//Random flipped birb
-//Add ROCKET, COMES FROM BELOW and GOES in a DIAGONAL UPWARDS
-//ADD BAKGROUND + PARALLAX EFFECT
-//
-//faster over time??! (hard to implement??)
+
+//OCKET, COMES FROM BELOW and GOES in a DIAGONAL UPWARDS
+
 //ADD loading time?? alien doesn't load
 
 // console.log(sources[0]);
@@ -52,7 +50,7 @@ class Game {
   }
   init() {
     //We get the canvas and the context of the canvas
-    this.timer = new Timer(300);
+    this.timer = new Timer(180);
     this.canvas = document.querySelector("#canvas");
     // console.log(this.canvas);
     this.ctx = this.canvas.getContext("2d");
@@ -72,7 +70,9 @@ class Game {
         leftButton.textContent = "CONTINUE";
         leftButton.classList.replace("pause", "continue");
       } else if (leftButton.classList.contains("continue")) {
-        this.timer.start();
+        this.timer.start(() => this.printTime());
+        leftButton.textContent = "PAUSE";
+        leftButton.classList.replace("continue", "pause");
       }
     };
 
@@ -86,35 +86,28 @@ class Game {
   }
 
   startGame() {
-    if (this.timer.working) {
-      // console.log(`Game started!!`);
-      //create background
-      this.background = new Background(
-        this.canvas,
-        this.ctx,
-        this.moveSpeed,
-        1
-      );
+    // console.log(`Game started!!`);
+    // this.timer.reset();
+    //create background
+    this.background = new Background(this.canvas, this.ctx, this.moveSpeed, 1);
 
-      //create alien
-      this.alien = new Alien(this.canvas, this.ctx);
-      this.canvas.addEventListener("mousemove", (event) => {
-        this.alien.move(event);
-        //   console.log(event);
-      });
+    //create alien
+    this.alien = new Alien(this.canvas, this.ctx);
+    this.canvas.addEventListener("mousemove", (event) => {
+      this.alien.move(event);
+      //   console.log(event);
+    });
 
-      this.backgroundPara = new Background(
-        this.canvas,
-        this.ctx,
-        this.moveSpeed,
-        2
-      );
-      this.timer.start(() => this.printTime());
+    this.backgroundPara = new Background(
+      this.canvas,
+      this.ctx,
+      this.moveSpeed,
+      2
+    );
+    this.timer.start(() => this.printTime());
 
-      //draw all function
-      this.drawAll();
-      //addEventListeners
-    }
+    //draw all function
+    this.drawAll();
   }
 
   reset() {
@@ -190,9 +183,8 @@ class Game {
         cancelAnimationFrame(this.intervalId);
         return;
       }
-
-      this.intervalId = requestAnimationFrame(() => this.drawAll());
     }
+    this.intervalId = requestAnimationFrame(() => this.drawAll());
   }
 
   collisionCheck(obstacle) {
@@ -261,7 +253,7 @@ class Game {
     //balloons +500
     calc += 500 * this.balloons;
     //time 10s +100
-    calc += (this.timer.time - this.timer.currentTime) * 100;
+    calc += ((this.timer.time - this.timer.currentTime) / 10) * 100;
     return calc;
   }
 }

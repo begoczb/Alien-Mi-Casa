@@ -21,7 +21,7 @@ class Background {
   draw(time) {
     // console.log(`Background??`);
 
-    if (time === 290) {
+    if (time === 170) {
       if (this.whichBg === 1) {
         this.image.src = "./src/images/background_space_placeholder.jpg";
       } else if (this.whichBg === 2) {
