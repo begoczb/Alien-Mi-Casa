@@ -1,14 +1,20 @@
 class Background {
-  constructor(canvas, ctx, moveSpeed) {
+  constructor(canvas, ctx, moveSpeed, source) {
     this.canvas = canvas;
     this.ctx = ctx;
     this.y = 0;
     this.moveSpeed = moveSpeed;
     this.image = new Image();
+    this.whichBg = source;
     this.init();
   }
   init() {
-    this.image.src = "./src/images/background_sky_placeholder.jpg";
+    if (this.whichBg === 1) {
+      this.image.src = "./src/images/sky_background.png";
+    } else if (this.whichBg === 2) {
+      this.image.src = "./src/images/sky_background_front.png";
+    }
+
     this.draw();
   }
 
@@ -16,7 +22,11 @@ class Background {
     // console.log(`Background??`);
 
     if (time === 290) {
-      this.image.src = "./src/images/background-placeholder.jpg";
+      if (this.whichBg === 1) {
+        this.image.src = "./src/images/background_space_placeholder.jpg";
+      } else if (this.whichBg === 2) {
+        this.image.src = "./src/images/space_debris_placeholder.png";
+      }
     }
     this.ctx.drawImage(
       this.image,

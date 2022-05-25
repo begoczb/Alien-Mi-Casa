@@ -28,26 +28,30 @@ class Alien {
 
   draw() {
     if (this.invulnerabilityFrames) {
-      this.ctx.save();
-      this.ctx.globalAlpha = 0.5;
+      //   this.ctx.save();
+      // this.ctx.globalAlpha = 0.5;
+      this.imageB.src = "./src/images/balloons_invulnerable.png";
       this.ctx.drawImage(
         this.imageB,
-        this.x - 10,
+        this.x - 20,
         this.y - this.imageB.height / 3,
         this.widthB,
         this.heightB
       );
+      this.image.src = "./src/images/alien_invulnerable.png";
       this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
-      this.ctx.restore();
+      // this.ctx.restore();
     } else {
-      this.ctx.globalAlpha = 1;
+      // this.ctx.globalAlpha = 1;
+      this.imageB.src = "./src/images/balloons.png";
       this.ctx.drawImage(
         this.imageB,
-        this.x - 10,
+        this.x - 20,
         this.y - this.imageB.height / 3,
         this.widthB,
         this.heightB
       );
+      this.image.src = "./src/images/alien.png";
       this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
   }

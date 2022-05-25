@@ -84,34 +84,34 @@ body {
 }
 
 .astronaut img {
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 70%;
 }
 
 .astronaut {
-  width: 10%;
-  height: 10%;
+  /* width: 10%;
+  height: 20%; */
   position: absolute;
   z-index: -1;
   left: 0;
 }
 
 .bubble {
-  animation: bounce 13s linear infinite alternate;
+  animation: bounce 20s linear infinite alternate;
 }
 
 @keyframes bounce {
   100% {
-    transform: translateX(calc(100vw - 10vw));
+    transform: translateX(calc(100vw - 5vw));
   }
 }
 .inside-bubble {
-  animation: bounceElement 7s linear infinite alternate;
+  animation: bounceElement 14s linear infinite alternate;
 }
 
 @keyframes bounceElement {
   100% {
-    transform: translateY(calc(100vh - 10vh)) rotate(360deg);
+    transform: translateY(calc(100vh - 15vh)) rotate(360deg);
   }
 }
 
