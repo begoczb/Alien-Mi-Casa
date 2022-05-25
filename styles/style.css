@@ -1,22 +1,27 @@
 /* Issues adding new font */
-/* @import url("/VarinonormalRegular-nRYg4.otf"); */
 
 /* @font-face {
   font-family: "SciFi";
-   src: local("VarinonormalRegular-nRYg4.otf") format("onetype"); 
-  src: ("../Barcade-R4LM.otf") format ("opentype");
+  src: local("../VarinonormalRegular-nRYg4.otf") format("onetype");
+   src: url("Barcade-R4LM.otf") format ("opentype"); 
 } */
+
+/* TODO */
+/* MAKE TITLE SMALLER HERE */
 
 * {
   box-sizing: border-box;
   margin: 0;
 }
+.hidden {
+  display: none;
+}
 
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   font-family: "SciFi";
   background-image: url("../src/images/alienmicasabg.png");
   background-size: cover;
@@ -27,46 +32,128 @@ body {
   position: relative;
 }
 
-#homepage {
+#game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-}
-
-footer p {
-  color: white;
-  font-size: 1rem;
 }
 
 .btn-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   padding: 1rem;
-  width: 20%;
+  width: 60%;
   height: 10%;
+  margin-top: 1rem;
+}
+
+#canvas {
+  border: 2px solid #fff49b;
+}
+
+#game-canvas {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.timer-container {
+  position: absolute;
+  color: white;
+  top: 0;
+  font-size: 3rem;
+}
+
+.btn {
+  text-align: center;
+  padding: 1rem;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
+}
+
+.sound {
+  padding: 0.3rem 0.3rem 0 0.3rem;
+}
+
+.astronaut img {
+  width: 70%;
+  height: 70%;
+}
+
+.astronaut {
+  position: absolute;
+  z-index: -2;
+  left: 0;
+}
+
+.bubble {
+  animation: bounce 20s linear infinite alternate;
+}
+
+@keyframes bounce {
+  100% {
+    transform: translateX(calc(100vw - 5vw));
+  }
+}
+.inside-bubble {
+  animation: bounceElement 14s linear infinite alternate;
+}
+
+@keyframes bounceElement {
+  100% {
+    transform: translateY(calc(100vh - 15vh)) rotate(360deg);
+  }
+}
+
+footer {
+  color: white;
+  padding: 1rem;
 }
 
 .rules-container {
-  display: hidden;
   z-index: 1;
-}
-
-/* .astronaut {
-  width: 3rem;
-  height: 3rem;
-  /* position: absolute; 
-  position: 0, 0;
-} */
-
-.rules-container {
-  display: none;
   background-color: white;
   position: absolute;
-
+  align-self: center;
   padding: 1.5rem;
   border-radius: 30px;
 }
@@ -79,17 +166,4 @@ footer p {
 .rules-container ul {
   list-style: none;
   padding: 0;
-}
-
-.show {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.btn {
-  padding: 1.5rem;
-  border: none;
-  border-radius: 20px;
 }

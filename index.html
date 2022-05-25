@@ -8,18 +8,34 @@
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <section id="homepage">
-      <!-- Title placeholder for title image -->
-      <h1><img src="./src/images/Alien-Mi-Casa-Title.png" /></h1>
-      <div class="btn-container">
-        <button class="btn play"><a href="game.html">PLAY</a></button>
-        <!-- <form class="user-form"><input /></form> -->
-        <button class="btn rules">RULES</button>
-        <!-- BONUS Add Hall of Fame Button -->
-        <!-- <button>HALL OF FAME</button> -->
+    <section id="game">
+      <div class="container">
+        <h1><img src="./src/images/Alien-Mi-Casa-Title.png" /></h1>
+        <div class="btn-container">
+          <button class="btn left start">START</button>
+          <button class="btn right rules">RULES</button>
+          <button class="btn sound on">
+            <img
+              src="./src/images/no_sound_icon.svg"
+              width="30"
+              height="30"
+              alt="sound icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div id="game-canvas">
+        <canvas id="canvas" width="600" height="800" class="hidden"></canvas>
+        <div class="timer-container hidden">
+          <span class="minDec">0</span>
+          <span class="minUni">5</span>
+          <span>:</span>
+          <span class="secDec">0</span>
+          <span class="secUni">0</span>
+        </div>
       </div>
     </section>
-    <section class="rules-container">
+    <section class="rules-container hidden">
       <h3>RULES</h3>
       <ul class="rules-list">
         <li>Rule 1</li>
@@ -27,12 +43,20 @@
         <li>Rule 3</li>
       </ul>
     </section>
-
-    <!-- <picture class="astronaut"
-      ><img src="./src/images/astronaut-placehoder.png" alt="astronaut"
-    /></picture> -->
-
-    <footer><p>Begonia Calzado</p></footer>
+    <aside class="astronaut bubble">
+      <img
+        src="./src/images/astronaut.png"
+        alt="astronaut"
+        class="inside-bubble"
+      />
+    </aside>
+    <footer>Begonia Calzado</footer>
+    <audio src="./src/sound/bensound-scifi.mp3"></audio>
+    <script type="text/javascript" src="js/obstacles.js"></script>
+    <script type="text/javascript" src="js/alien.js"></script>
+    <script type="text/javascript" src="js/background.js"></script>
+    <script type="text/javascript" src="js/timer.js"></script>
+    <script type="text/javascript" src="js/gameLogic.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>
