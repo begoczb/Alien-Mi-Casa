@@ -22,14 +22,12 @@ class Alien {
     this.height = this.image.height / 1.5;
     this.widthB = this.imageB.width / 1.5;
     this.heightB = this.imageB.height / 1.5;
-    // console.log(`We draw the alien!!`);
+
     this.draw();
   }
 
   draw() {
     if (this.invulnerabilityFrames) {
-      //   this.ctx.save();
-      // this.ctx.globalAlpha = 0.5;
       this.imageB.src = "./src/images/balloons_invulnerable.png";
       this.ctx.drawImage(
         this.imageB,
@@ -40,9 +38,7 @@ class Alien {
       );
       this.image.src = "./src/images/alien_invulnerable.png";
       this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
-      // this.ctx.restore();
     } else {
-      // this.ctx.globalAlpha = 1;
       this.imageB.src = "./src/images/balloons.png";
       this.ctx.drawImage(
         this.imageB,
@@ -73,7 +69,7 @@ class Alien {
     let counter = 0;
     let intervalId = setInterval(() => {
       counter++;
-      if (counter === 1) {
+      if (counter === 2) {
         counter = 0;
         this.invulnerabilityFrames = false;
         clearInterval(intervalId);

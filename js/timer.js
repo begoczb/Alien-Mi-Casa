@@ -10,7 +10,7 @@ class Timer {
     this.working = true;
     this.intervalId = setInterval(() => {
       this.currentTime -= 1;
-      console.log(`current time is: ${this.currentTime}`);
+
       if (typeof callback === "function") {
         callback();
       }
@@ -35,11 +35,11 @@ class Timer {
 
   stop() {
     this.working = false;
-    console.log(this.working);
+    // console.log(this.working);
     return clearInterval(this.intervalId);
   }
 
-  reset(value) {
-    this.currentTime = value;
+  reset() {
+    this.currentTime = this.time;
   }
 }

@@ -11,6 +11,7 @@ const spaceSources = [
   "./src/images/astronaut.png",
 ];
 const leftButton = document.querySelector(".left");
+const rightButton = document.querySelector(".right");
 
 const timerContainer = document.querySelector(".timer-container");
 
@@ -18,6 +19,7 @@ const minDec = document.querySelector(".minDec");
 const minUni = document.querySelector(".minUni");
 const secDec = document.querySelector(".secDec");
 const secUni = document.querySelector(".secUni");
+
 const astronaut = document.querySelector(".astronaut");
 
 //TODO,
@@ -45,6 +47,7 @@ class Game {
     this.moveSpeed = 5;
     this.gameOver = false;
     this.timer = null;
+    this.score = 0;
     this.init();
   }
   init() {
@@ -54,11 +57,12 @@ class Game {
     // console.log(this.canvas);
     this.ctx = this.canvas.getContext("2d");
     leftButton.onclick = () => {
-      if (leftButton.classList.contains("start")) {
+      if (leftButton.classList.contains("play")) {
+        title.classList.add("smaller");
         this.canvas.classList.remove("hidden");
         timerContainer.classList.remove("hidden");
         leftButton.textContent = "PAUSE";
-        leftButton.classList.replace("start", "pause");
+        leftButton.classList.replace("play", "pause");
 
         astronaut.classList.add("hidden");
 
@@ -69,6 +73,14 @@ class Game {
         leftButton.classList.replace("pause", "continue");
       } else if (leftButton.classList.contains("continue")) {
         this.timer.start();
+      }
+    };
+
+    rightButton.onclick = () => {
+      if (leftButton.classList.contains("pause")) {
+        this.timer.stop();
+        leftButton.textContent = "CONTINUE";
+        leftButton.classList.replace("pause", "continue");
       }
     };
   }
@@ -86,6 +98,11 @@ class Game {
 
       //create alien
       this.alien = new Alien(this.canvas, this.ctx);
+      this.canvas.addEventListener("mousemove", (event) => {
+        this.alien.move(event);
+        //   console.log(event);
+      });
+
       this.backgroundPara = new Background(
         this.canvas,
         this.ctx,
@@ -97,11 +114,6 @@ class Game {
       //draw all function
       this.drawAll();
       //addEventListeners
-
-      this.canvas.addEventListener("mousemove", (event) => {
-        this.alien.move(event);
-        //   console.log(event);
-      });
     }
   }
 
@@ -157,9 +169,8 @@ class Game {
           if (this.collisionCheck(this.obstacles[i])) {
             if (!this.alien.invulnerabilityFrames) {
               this.balloons -= 1;
-              console.log(this.alien.invulnerabilityFrames);
+
               this.alien.setInvulnerable();
-              console.log(this.alien.invulnerabilityFrames);
             }
             this.gameStatus();
             console.log(this.balloons);
@@ -186,6 +197,7 @@ class Game {
 
   collisionCheck(obstacle) {
     let withinY;
+
     const alienHead = this.alien.y - this.alien.heightB;
     const alienFeet =
       alienHead +
@@ -196,8 +208,10 @@ class Game {
       obstacle.x + obstacle.width > alienLeft && obstacle.x < alienRight;
     if (obstacle.image.src.includes("rocket")) {
       withinY = obstacle.y2 > alienHead && obstacle.y2 < alienFeet;
+      console.log(withinY);
     } else {
       withinY = obstacle.y > alienHead && obstacle.y < alienFeet;
+      // console.log(withinY);
     }
 
     return withinX && withinY;
@@ -207,14 +221,19 @@ class Game {
     if (this.balloons <= 0) {
       this.gameOver = true;
       this.timer.stop();
-      this.timer.reset(300);
+      this.score = this.calculateScore();
+      this.timer.reset();
+
+      showGameOver(false);
 
       console.log(`Game Over!!`);
     }
     if (this.timer.currentTime === 0) {
       this.gameOver = true;
       this.timer.stop();
-      this.timer.reset(300);
+      this.score = this.calculateScore();
+      this.timer.reset();
+      showGameOver(false);
 
       console.log(`Game Over!!`);
     }
@@ -235,5 +254,14 @@ class Game {
     let seconds = this.timer.computeTwoDigitNumber(this.timer.getSeconds());
     secUni.textContent = seconds.toString().slice(1);
     secDec.textContent = seconds.toString().slice(0, 1);
+  }
+
+  calculateScore() {
+    let calc = 0;
+    //balloons +500
+    calc += 500 * this.balloons;
+    //time 10s +100
+    calc += (this.timer.time - this.timer.currentTime) * 100;
+    return calc;
   }
 }

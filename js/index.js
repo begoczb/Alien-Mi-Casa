@@ -7,6 +7,15 @@ const soundImg = document.querySelector(".sound img");
 const rulesBtn = document.querySelector(".rules");
 const rules = document.querySelector(".rules-container");
 
+const title = document.querySelector("h1");
+
+const gameOver = document.querySelector(".game-over");
+const goTitle = document.querySelector(".win-lose");
+const goMessage = document.querySelector(".message");
+const highScore = document.querySelector(".high-score");
+
+// const leftButton = document.querySelector(".left");
+
 backgroundMusic.play();
 
 soundBtn.onclick = () => {
@@ -21,9 +30,6 @@ soundBtn.onclick = () => {
   }
 };
 
-console.log(rulesBtn);
-console.log(rules);
-
 rulesBtn.addEventListener("click", () => {
   if (rules.classList.contains("hidden")) {
     rules.classList.remove("hidden");
@@ -31,3 +37,13 @@ rulesBtn.addEventListener("click", () => {
     rules.classList.add("hidden");
   }
 });
+
+function showGameOver(condition) {
+  if (condition === false) {
+    gameOver.classList.remove("hidden");
+
+    goTitle.textContent = "You LOST!!";
+    goMessage.textContent = "uh oh";
+    highScore.textContent = `${myGame.score}`;
+  }
+}
