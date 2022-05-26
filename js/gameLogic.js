@@ -23,9 +23,11 @@ const secUni = document.querySelector(".secUni");
 const astronaut = document.querySelector(".astronaut");
 
 //TODO,
-//game lose/win logic, RESET
-
-//OCKET, COMES FROM BELOW and GOES in a DIAGONAL UPWARDS
+//add x movement on parallax
+//change space background
+//add sound effects!! button, collision??
+//win board
+//background to timer
 
 //ADD loading time?? alien doesn't load
 
@@ -129,7 +131,7 @@ class Game {
 
       this.backgroundPara.scroll();
 
-      if (this.counter % 60 === 0) {
+      if (this.counter % 45 === 0) {
         if (this.background.image.src.includes("sky")) {
           this.obstacles.push(
             new Obstacle(
@@ -254,6 +256,6 @@ class Game {
     calc += 500 * this.balloons;
     //time 10s +100
     calc += ((this.timer.time - this.timer.currentTime) / 10) * 100;
-    return calc;
+    return calc.toFixed(0);
   }
 }

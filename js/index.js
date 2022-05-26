@@ -33,14 +33,6 @@ soundBtn.onclick = () => {
   }
 };
 
-rulesBtn.addEventListener("click", () => {
-  if (rules.classList.contains("hidden")) {
-    rules.classList.remove("hidden");
-  } else {
-    rules.classList.add("hidden");
-  }
-});
-
 for (let i = 0; i < replayBtn.length; i++) {
   replayBtn[i].addEventListener("click", () => {
     myGame.timer.stop();
@@ -50,9 +42,27 @@ for (let i = 0; i < replayBtn.length; i++) {
     if (replayBtn[i].classList.contains("go-btn")) {
       gameOver.classList.add("hidden");
     }
+
+    if (leftButton.classList.contains("continue")) {
+      leftButton.textContent = "PAUSE";
+      leftButton.classList.replace("continue", "pause");
+    }
   });
 }
 
+rules.addEventListener("click", () => {
+  if (!rules.classList.contains("hidden")) {
+    rules.classList.add("hidden");
+  }
+});
+
+rulesBtn.addEventListener("click", () => {
+  if (rules.classList.contains("hidden")) {
+    rules.classList.remove("hidden");
+  } else {
+    rules.classList.add("hidden");
+  }
+});
 // replayBtn[0].addEventListener("click", () => {
 //   // console.log(`click click!`);
 //   myGame.timer.stop();

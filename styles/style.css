@@ -1,17 +1,9 @@
-/* Issues adding new font */
-
-/* @font-face {
-  font-family: "SciFi";
-  src: local("../VarinonormalRegular-nRYg4.otf") format("onetype");
-   src: url("Barcade-R4LM.otf") format ("opentype"); 
-} */
-
-/* TODO */
-/* MAKE TITLE SMALLER HERE */
+@import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: Syne monospace;
 }
 
 body {
@@ -19,7 +11,6 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-family: "SciFi";
   background-image: url("../src/images/alienmicasabg.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -75,7 +66,11 @@ h1 {
 
 .timer-container {
   position: absolute;
-  color: white;
+  color: rgb(61, 61, 61);
+  background-color: rgb(255, 255, 255);
+
+  border-radius: 1rem;
+  border: 2px solid #fff49b;
   top: 0;
   font-size: 3rem;
 }
@@ -148,12 +143,38 @@ footer {
 }
 
 .rules-container {
+  display: flex;
+  flex-direction: column;
   z-index: 1;
-  background-color: white;
+  color: white;
   position: absolute;
   align-self: center;
+
   padding: 1.5rem;
   border-radius: 30px;
+  text-align: center;
+  width: 40%;
+  flex-grow: 1;
+  background-color: #c6dec6;
+}
+
+.container-inner {
+  width: 100%;
+  border-radius: 30px;
+  background-color: #20332b;
+  padding: 1rem;
+}
+
+.rules-text p span {
+  padding: 0.5rem;
+  display: block;
+  line-height: 1.5;
+  white-space: pre;
+}
+
+.rules-container aside {
+  text-align: end;
+  font-style: italic;
 }
 
 .rules-container h3 {
@@ -162,8 +183,13 @@ footer {
 }
 
 .rules-container ul {
-  list-style: none;
-  padding: 0;
+  align-self: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.rules-container li {
+  padding: 0.5em;
 }
 
 .smaller {

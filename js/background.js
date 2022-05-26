@@ -6,13 +6,16 @@ class Background {
     this.moveSpeed = moveSpeed;
     this.image = new Image();
     this.whichBg = source;
+    this.imageB = new Image();
     this.init();
   }
   init() {
     if (this.whichBg === 1) {
       this.image.src = "./src/images/sky_background.png";
+      this.imageB.src = "./src/images/sky_background.png";
     } else if (this.whichBg === 2) {
       this.image.src = "./src/images/sky_background_front.png";
+      this.imageB.src = "./src/images/sky_background_front.png";
     }
 
     this.draw();
@@ -20,12 +23,37 @@ class Background {
 
   draw(time) {
     // console.log(`Background??`);
+    // console.log(`this y`, this.y);
 
-    if (time === 170) {
+    if (this.y === this.canvas.height && this.image.src.includes("sky")) {
+      // console.log(`1 condition met`);
+      if (time < 130) {
+        // console.log(`2 condition met`);
+
+        if (this.whichBg === 1) {
+          this.image.src = "./src/images/transition_background.png";
+          this.imageB.src = "./src/images/space_background.png";
+        } else if (this.whichBg === 2) {
+          this.imageB.src = "./src/images/space_debris_front.png";
+          this.image.src = "./src/images/space_debris_front.png";
+        }
+      }
+    }
+
+    if (this.image.src.includes("transition") && this.y === 685) {
+      // console.log(`condition 3`);
       if (this.whichBg === 1) {
-        this.image.src = "./src/images/background_space_placeholder.jpg";
+        this.imageB.src = "./src/images/space_background.png";
       } else if (this.whichBg === 2) {
-        this.image.src = "./src/images/space_debris_placeholder.png";
+        this.imageB.src = "./src/images/space_debris_front.png";
+      }
+    }
+
+    if (this.imageB.src.includes("space") && this.y === 685) {
+      if (this.whichBg === 1) {
+        this.image.src = "./src/images/space_background.png";
+      } else if (this.whichBg === 2) {
+        this.image.src = "./src/images/space_debris_front.png";
       }
     }
     this.ctx.drawImage(
@@ -35,19 +63,21 @@ class Background {
       this.canvas.width,
       this.canvas.height
     );
-    this.ctx.drawImage(
-      this.image,
-      0,
-      this.y - this.canvas.height,
-      canvas.width,
-      canvas.height
-    );
+    {
+      this.ctx.drawImage(
+        this.imageB,
+        0,
+        this.y - this.canvas.height,
+        canvas.width,
+        canvas.height
+      );
+    }
   }
 
   scroll() {
-    this.y += this.moveSpeed;
     if (this.y >= this.canvas.height) {
       this.y = 0;
     }
+    this.y += this.moveSpeed;
   }
 }
