@@ -9,6 +9,7 @@ const soundImg = document.querySelector(".sound img");
 const gameOverSound = document.querySelector(".game-lost");
 const buttonSound = document.querySelector(".click");
 const popSound = document.querySelector(".pop");
+const winSound = document.querySelector(".win");
 
 const rulesBtn = document.querySelector(".rules");
 const rules = document.querySelector(".rules-container");
@@ -19,6 +20,7 @@ const gameOver = document.querySelector(".game-over");
 const goTitle = document.querySelector(".win-lose");
 const goMessage = document.querySelector(".message");
 const highScore = document.querySelector(".high-score");
+const alienImage = document.querySelector(".alien");
 
 // const leftButton = document.querySelector(".left");
 
@@ -88,9 +90,15 @@ function showGameOver(condition) {
     if (myGame.balloons === 0) {
       gameOverSound.play();
 
+      alienImage.src = "./src/images/alien_hurt.png";
+
       goTitle.textContent = "--GAME OVER--";
       goMessage.textContent = "Aejdsnewonbjios couldn't make it home :(";
     } else {
+      winSound.play();
+
+      goTitle.textContent = "⋆⁺₊⋆ YOU WON ⋆⁺₊⋆";
+      goMessage.textContent = "Thank you for bringing Aejdsnewonbjios home";
     }
 
     highScore.textContent = `YOU SCORED ${myGame.score} POINTS!`;
