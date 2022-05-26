@@ -1,11 +1,11 @@
 class Alien {
-  constructor(canvas, ctx) {
+  constructor(canvas, ctx, image, imageB) {
     this.canvas = canvas;
     this.ctx = ctx;
     this.x = this.canvas.width / 2 - 50;
     this.y = this.canvas.height / 2 + 250;
-    this.image = new Image();
-    this.imageB = new Image();
+    this.image = image;
+    this.imageB = imageB;
     this.width = null;
     this.height = null;
     this.widthB = null;
@@ -22,7 +22,6 @@ class Alien {
     this.height = this.image.height / 1.5;
     this.widthB = this.imageB.width / 1.5;
     this.heightB = this.imageB.height / 1.5;
-
     this.draw();
   }
 

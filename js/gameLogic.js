@@ -10,6 +10,10 @@ const spaceSources = [
   "./src/images/first_rocket.png",
   "./src/images/astronaut.png",
 ];
+
+const imageAlien = new Image();
+const imageBalloon = new Image();
+
 const leftButton = document.querySelector(".left");
 const rightButton = document.querySelector(".right");
 
@@ -92,7 +96,7 @@ class Game {
     this.background = new Background(this.canvas, this.ctx, this.moveSpeed, 1);
 
     //create alien
-    this.alien = new Alien(this.canvas, this.ctx);
+    this.alien = new Alien(this.canvas, this.ctx, imageAlien, imageBalloon);
     this.canvas.addEventListener("mousemove", (event) => {
       this.alien.move(event);
       //   console.log(event);
