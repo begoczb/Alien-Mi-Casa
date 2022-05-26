@@ -3,7 +3,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: Syne monospace;
+  font-family: Syne Mono;
 }
 
 body {
@@ -65,21 +65,30 @@ h1 {
 }
 
 .timer-container {
+  width: 35%;
+  padding: 0.8rem;
   position: absolute;
-  color: rgb(61, 61, 61);
-  background-color: rgb(255, 255, 255);
+  color: white;
+  background-color: #c6dec6;
 
-  border-radius: 1rem;
-  border: 2px solid #fff49b;
-  top: 0;
-  font-size: 3rem;
+  border-radius: 15px;
+  top: 10px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.timer-inner {
+  width: 100%;
+  border-radius: 15px;
+  background-color: #20332b;
+  padding: 0.5rem;
 }
 
 .btn {
   text-align: center;
   padding: 1rem;
 
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
   font-size: 16px;
   letter-spacing: 2px;
   text-decoration: none;
@@ -153,7 +162,8 @@ footer {
   padding: 1.5rem;
   border-radius: 30px;
   text-align: center;
-  width: 40%;
+  width: 60%;
+  font-size: 1.5rem;
   flex-grow: 1;
   background-color: #c6dec6;
 }
@@ -202,22 +212,45 @@ footer {
 }
 
 .game-over {
+  display: flex;
+  justify-content: center;
   width: 50vw;
   height: 50vh;
   z-index: 1;
   position: absolute;
-  background-color: white;
-  position: absolute;
-  align-self: center;
+  background-color: #c6dec6;
   padding: 1.5rem;
   border-radius: 30px;
+}
+
+.inner {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   align-content: center;
   text-align: center;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background-color: #20332b;
+  padding: 1rem;
+  color: white;
 }
 
+.alien {
+  width: 10%;
+
+  align-self: center;
+}
+
+.win-lose {
+  font-size: 3rem;
+}
+
+.high-score {
+  font-size: 3rem;
+}
 .replay {
   width: 30%;
   align-self: center;

@@ -28,11 +28,13 @@
       <div id="game-canvas">
         <canvas id="canvas" width="600" height="800" class="hidden"></canvas>
         <div class="timer-container hidden">
-          <span class="minDec">0</span>
-          <span class="minUni">3</span>
-          <span>:</span>
-          <span class="secDec">0</span>
-          <span class="secUni">0</span>
+          <div class="timer-inner">
+            <span class="minDec">0</span>
+            <span class="minUni">3</span>
+            <span>:</span>
+            <span class="secDec">0</span>
+            <span class="secUni">0</span>
+          </div>
         </div>
       </div>
     </section>
@@ -43,14 +45,14 @@
           <p>
             <span>Beep beep... boop... [static]</span
             ><span> H.. Hello? Hello fellow sentient being.</span>
-            <span>We are in need of your help to get [static] home!</span
+            <span>We are in need of your help to get Aejdsnewonbjios home!</span
             ><span> Please follow the instructions on the screen.</span>
           </p>
 
           <ul class="rules-list">
             <li>
-              You'll be able to move [static] by hovering over them with your
-              mouse.
+              You'll be able to move Aejdsnewonbjios by hovering over them with
+              your mouse.
             </li>
             <li>Don't let the balloons pop! You only have 5 chances.</li>
             <li>You have 3 minutes to complete this task!</li>
@@ -61,11 +63,13 @@
       </div>
     </section>
     <section class="game-over hidden">
-      <h3 class="win-lose">LOST/WON</h3>
-      <img class="alien" src="./src/images/alien_hurt.png" alt="sad alien" />
-      <span class="message">Sadly you couldn't make it home! :(</span>
-      <span class="high-score">HIGH SCORE</span>
-      <button class="btn replay go-btn">PLAY AGAIN</button>
+      <div class="inner">
+        <h3 class="win-lose">LOST/WON</h3>
+        <img class="alien" src="./src/images/alien_hurt.png" alt="sad alien" />
+        <span class="message">Sadly you couldn't make it home! :(</span>
+        <span class="high-score">HIGH SCORE</span>
+        <button class="btn replay go-btn">PLAY AGAIN</button>
+      </div>
     </section>
     <aside class="astronaut bubble">
       <img
@@ -75,7 +79,19 @@
       />
     </aside>
     <footer>Begonia Calzado</footer>
-    <audio src="./src/sound/bensound-scifi.mp3"></audio>
+    <audio class="bg" src="./src/sound/bensound-scifi.mp3"></audio>
+    <audio
+      class="game-lost"
+      src="./src/sound/mixkit-retro-game-over-1947.wav"
+    ></audio>
+    <audio
+      class="click"
+      src="./src/sound/mixkit-arcade-mechanical-bling-210.wav"
+    ></audio>
+    <audio
+      class="pop"
+      src="./src/sound/mixkit-ballon-blows-up-3071.wav"
+    ></audio>
     <script type="text/javascript" src="js/obstacles.js"></script>
     <script type="text/javascript" src="js/alien.js"></script>
     <script type="text/javascript" src="js/background.js"></script>

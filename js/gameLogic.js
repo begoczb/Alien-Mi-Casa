@@ -23,8 +23,6 @@ const secUni = document.querySelector(".secUni");
 const astronaut = document.querySelector(".astronaut");
 
 //TODO,
-//add x movement on parallax
-//change space background
 //add sound effects!! button, collision??
 //win board
 //background to timer
@@ -164,11 +162,14 @@ class Game {
           if (this.collisionCheck(this.obstacles[i])) {
             if (!this.alien.invulnerabilityFrames) {
               this.balloons -= 1;
+              popSound.pause();
+              popSound.currentTime = 0;
+              popSound.play();
 
               this.alien.setInvulnerable();
             }
             this.gameStatus();
-            console.log(this.balloons);
+            // console.log(this.balloons);
             if (this.gameOver) {
               cancelAnimationFrame(this.intervalId);
               return;
@@ -202,7 +203,7 @@ class Game {
       obstacle.x + obstacle.width > alienLeft && obstacle.x < alienRight;
     if (obstacle.image.src.includes("rocket")) {
       withinY = obstacle.y2 > alienHead && obstacle.y2 < alienFeet;
-      console.log(withinY);
+      // console.log(withinY);
     } else {
       withinY = obstacle.y > alienHead && obstacle.y < alienFeet;
       // console.log(withinY);
@@ -220,7 +221,7 @@ class Game {
 
       showGameOver(false);
 
-      console.log(`Game Over!!`);
+      // console.log(`Game Over!!`);
     }
     if (this.timer.currentTime === 0) {
       this.gameOver = true;
@@ -229,7 +230,7 @@ class Game {
       this.timer.reset();
       showGameOver(false);
 
-      console.log(`Game Over!!`);
+      // console.log(`Game Over!!`);
     }
   }
 
