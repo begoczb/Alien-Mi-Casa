@@ -24,8 +24,8 @@ The title takes after the movie quote _Mi casa, teléfono - ET_.
 
 ## Issues
 
-- Phantom collisions some times.
-- Alien and/or balloons not loading properly on first load/restart.
+- Phantom collisions sometimes.
+
 
 ## Demo
 
