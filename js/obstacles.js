@@ -14,11 +14,18 @@ class Obstacle {
     this.angle = 0;
     this.rotation = 2.5;
     this.flipped = flipped;
-    this.init();
+    // this.init();
   }
 
   init() {
     this.image.src = `${this.source}`;
+    console.log(this.image);
+
+    this.image.addEventListener("load", () => this.load());
+  }
+
+  load() {
+    console.log(this.image);
     if (this.image.src.includes("astronaut")) {
       this.width = this.image.width / 3;
       this.height = this.image.height / 3;
@@ -29,10 +36,12 @@ class Obstacle {
       this.width = this.image.width;
       this.height = this.image.height;
     }
-    this.draw();
+    this.image.removeEventListener("load", this.load, true);
+    // this.draw();
   }
 
   draw() {
+    console.log(this.image.width);
     if (this.image.src.includes("first")) {
       if (this.image.src.includes("yellow")) {
         this.image.src = "./src/images/second_yellow_birb_left.png";
@@ -161,6 +170,7 @@ class Obstacle {
     this.ctx.save();
     this.ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
     this.ctx.rotate((this.angle * Math.PI) / 180);
+    console.log("Asteroooo:    ", this.image);
     this.ctx.drawImage(
       this.image,
       (this.width / 2) * -1,

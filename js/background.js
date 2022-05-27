@@ -22,14 +22,8 @@ class Background {
   }
 
   draw(time) {
-    // console.log(`Background??`);
-    // console.log(`this y`, this.y);
-
     if (this.y === this.canvas.height && this.image.src.includes("sky")) {
-      // console.log(`1 condition met`);
       if (time < 130) {
-        // console.log(`2 condition met`);
-
         if (this.whichBg === 1) {
           this.image.src = "./src/images/transition_background.png";
           this.imageB.src = "./src/images/space_background.png";

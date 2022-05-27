@@ -27,9 +27,6 @@ const secUni = document.querySelector(".secUni");
 const astronaut = document.querySelector(".astronaut");
 
 //TODO,
-//add sound effects!! button, collision??
-//win board
-//background to timer
 
 //ADD loading time?? alien doesn't load
 
@@ -134,25 +131,26 @@ class Game {
       this.backgroundPara.scroll();
 
       if (this.counter % 45 === 0) {
+        console.log("Creating obstacle");
         if (this.background.image.src.includes("sky")) {
-          this.obstacles.push(
-            new Obstacle(
-              this.canvas,
-              this.ctx,
-              this.moveSpeed,
-              skySources[Math.floor(Math.random() * skySources.length)],
-              Math.floor(Math.random() * 2)
-            )
+          const obstacle = new Obstacle(
+            this.canvas,
+            this.ctx,
+            this.moveSpeed,
+            skySources[Math.floor(Math.random() * skySources.length)],
+            Math.floor(Math.random() * 2)
           );
+          obstacle.init();
+          this.obstacles.push(obstacle);
         } else if (this.background.image.src.includes("space")) {
-          this.obstacles.push(
-            new Obstacle(
-              this.canvas,
-              this.ctx,
-              this.moveSpeed,
-              spaceSources[Math.floor(Math.random() * spaceSources.length)]
-            )
+          const obstacle = new Obstacle(
+            this.canvas,
+            this.ctx,
+            this.moveSpeed,
+            spaceSources[Math.floor(Math.random() * spaceSources.length)]
           );
+          obstacle.init();
+          this.obstacles.push(obstacle);
         }
       }
 

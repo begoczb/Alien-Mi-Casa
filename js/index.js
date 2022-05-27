@@ -97,6 +97,8 @@ function showGameOver(condition) {
     } else {
       winSound.play();
 
+      alienImage.src = "./src/images/winlogo.png";
+
       goTitle.textContent = "⋆⁺₊⋆ YOU WON ⋆⁺₊⋆";
       goMessage.textContent = "Thank you for bringing Aejdsnewonbjios home";
     }
