@@ -19,13 +19,11 @@ class Obstacle {
 
   init() {
     this.image.src = `${this.source}`;
-    console.log(this.image);
 
     this.image.addEventListener("load", () => this.load());
   }
 
   load() {
-    console.log(this.image);
     if (this.image.src.includes("astronaut")) {
       this.width = this.image.width / 3;
       this.height = this.image.height / 3;
@@ -41,7 +39,6 @@ class Obstacle {
   }
 
   draw() {
-    console.log(this.image.width);
     if (this.image.src.includes("first")) {
       if (this.image.src.includes("yellow")) {
         this.image.src = "./src/images/second_yellow_birb_left.png";
@@ -146,9 +143,9 @@ class Obstacle {
       this.image.src.includes("asteroid") ||
       this.image.src.includes("astronaut")
     ) {
-      this.drawRotate(true);
+      this.drawRotate();
     } else if (this.image.src.includes("rocket")) {
-      this.drawRotate(false);
+      this.draw();
     } else {
       this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
@@ -161,16 +158,12 @@ class Obstacle {
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
 
-  drawRotate(animation) {
-    if (animation) {
-      this.angle += this.rotation;
-    } else if (!animation) {
-      this.angle = 2.5;
-    }
+  drawRotate() {
+    this.angle += this.rotation;
+
     this.ctx.save();
     this.ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
     this.ctx.rotate((this.angle * Math.PI) / 180);
-    console.log("Asteroooo:    ", this.image);
     this.ctx.drawImage(
       this.image,
       (this.width / 2) * -1,
@@ -180,8 +173,6 @@ class Obstacle {
     );
     this.ctx.restore();
   }
-
-  drawIncline() {}
 
   move() {
     if (this.source.includes("asteroid")) {

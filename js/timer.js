@@ -35,7 +35,7 @@ class Timer {
 
   stop() {
     this.working = false;
-    // console.log(this.working);
+
     return clearInterval(this.intervalId);
   }
 

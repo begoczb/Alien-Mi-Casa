@@ -22,10 +22,7 @@ const goMessage = document.querySelector(".message");
 const highScore = document.querySelector(".high-score");
 const alienImage = document.querySelector(".alien");
 
-// const leftButton = document.querySelector(".left");
-
 const replayBtn = document.querySelectorAll(".replay");
-// console.log(replayBtn);
 
 backgroundMusic.play();
 

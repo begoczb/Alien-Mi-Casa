@@ -89,9 +89,6 @@ class Alien {
     if (event.x > boundary.x + 50 && event.x < boundary.right - 50) {
       this.x = event.x - boundary.x - this.width / 2;
     }
-    // console.log(boundary);
-
-    // console.log(this.x);
   }
 
   setInvulnerable() {

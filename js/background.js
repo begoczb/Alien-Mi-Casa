@@ -35,7 +35,6 @@ class Background {
     }
 
     if (this.image.src.includes("transition") && this.y === 685) {
-      // console.log(`condition 3`);
       if (this.whichBg === 1) {
         this.imageB.src = "./src/images/space_background.png";
       } else if (this.whichBg === 2) {

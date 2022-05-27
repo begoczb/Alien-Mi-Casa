@@ -26,11 +26,9 @@ const secUni = document.querySelector(".secUni");
 
 const astronaut = document.querySelector(".astronaut");
 
-//TODO,
+//TODO
+//HALL OF FAME IMPLEMENTATION
 
-//ADD loading time?? alien doesn't load
-
-// console.log(sources[0]);
 class Game {
   constructor() {
     //All we need for our game
@@ -53,7 +51,7 @@ class Game {
     //We get the canvas and the context of the canvas
     this.timer = new Timer(180);
     this.canvas = document.querySelector("#canvas");
-    // console.log(this.canvas);
+
     this.ctx = this.canvas.getContext("2d");
     leftButton.onclick = () => {
       if (leftButton.classList.contains("play")) {
@@ -87,8 +85,6 @@ class Game {
   }
 
   startGame() {
-    // console.log(`Game started!!`);
-    // this.timer.reset();
     //create background
     this.background = new Background(this.canvas, this.ctx, this.moveSpeed, 1);
 
@@ -96,7 +92,6 @@ class Game {
     this.alien = new Alien(this.canvas, this.ctx, imageAlien, imageBalloon);
     this.canvas.addEventListener("mousemove", (event) => {
       this.alien.move(event);
-      //   console.log(event);
     });
 
     this.backgroundPara = new Background(
@@ -131,7 +126,6 @@ class Game {
       this.backgroundPara.scroll();
 
       if (this.counter % 45 === 0) {
-        console.log("Creating obstacle");
         if (this.background.image.src.includes("sky")) {
           const obstacle = new Obstacle(
             this.canvas,
@@ -171,7 +165,7 @@ class Game {
               this.alien.setInvulnerable();
             }
             this.gameStatus();
-            // console.log(this.balloons);
+
             if (this.gameOver) {
               cancelAnimationFrame(this.intervalId);
               return;
@@ -205,10 +199,8 @@ class Game {
       obstacle.x + obstacle.width > alienLeft && obstacle.x < alienRight;
     if (obstacle.image.src.includes("rocket")) {
       withinY = obstacle.y2 > alienHead && obstacle.y2 < alienFeet;
-      // console.log(withinY);
     } else {
       withinY = obstacle.y > alienHead && obstacle.y < alienFeet;
-      // console.log(withinY);
     }
 
     return withinX && withinY;
@@ -222,8 +214,6 @@ class Game {
       this.timer.reset();
 
       showGameOver(false);
-
-      // console.log(`Game Over!!`);
     }
     if (this.timer.currentTime === 0) {
       this.gameOver = true;
@@ -231,8 +221,6 @@ class Game {
       this.score = this.calculateScore();
       this.timer.reset();
       showGameOver(false);
-
-      // console.log(`Game Over!!`);
     }
   }
 
