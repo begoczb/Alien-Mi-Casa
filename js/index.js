@@ -14,7 +14,7 @@ const winSound = document.querySelector(".win");
 const rulesBtn = document.querySelector(".rules");
 const rules = document.querySelector(".rules-container");
 
-const title = document.querySelector("h1");
+const title = document.querySelector(".title");
 
 const gameOver = document.querySelector(".game-over");
 const goTitle = document.querySelector(".win-lose");
