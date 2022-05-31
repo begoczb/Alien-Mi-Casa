@@ -20,6 +20,11 @@ body {
   position: relative;
 }
 
+.title-hidden {
+  opacity: 0;
+  z-index: -1;
+}
+
 #game {
   display: flex;
   justify-content: center;
